@@ -3,18 +3,22 @@ import Spinner from "./Spinner";
 import Message from "./Message";
 
 import styles from "./CountryList.module.css";
+import { useCities } from "../contexts/useCities";
 
-function CountryList({ cities, isLoading }) {
+function CountryList() {
+  const { cities, isLoading } = useCities();
+  
+  if (isLoading) return <Spinner />;
+  
   if (!cities.length)
     return (
       <Message message="Add your first city by clicking on a city on the map" />
     );
 
-  if (isLoading) return <Spinner />;
 
   const countries = cities.reduce((arr, city) => {
     if (!arr.map((el) => el.city).includes(city.country))
-      return [...arr, { country: city.countryName, emoji: city.emoji }];
+      return [...arr, { country: city.country, emoji: city.emoji }];
     else return arr;
   }, []);
 

@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useCities } from "../contexts/useCities";
 
 import BackButton from "./BackButton";
+import Spinner from "./Spinner";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -16,7 +17,7 @@ const formatDate = (date) =>
 
 function City() {
   const { id } = useParams();
-  const { getCity, currCity } = useCities();
+  const { getCity, currCity, isLoading } = useCities();
   // // TEMP DATA
   // const currentCity = {
   //   cityName: "Lisbon",
@@ -26,6 +27,7 @@ function City() {
   // };
 
   const { cityName, emoji, date, notes } = currCity;
+
   useEffect(
     function () {
       getCity(id);
@@ -33,6 +35,9 @@ function City() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [id]
   );
+
+  if (isLoading) return <Spinner />;
+
   return (
     <div className={styles.city}>
       <div className={styles.row}>

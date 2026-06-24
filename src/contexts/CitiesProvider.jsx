@@ -1,8 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { CitiesContext } from "./citiesContext";
 
 const BASE_URL = "http://localhost:8000";
-
-const CitiesContext = createContext();
 
 function CitiesProvider({ children }) {
   const [cities, setCities] = useState([]);
@@ -34,9 +33,47 @@ function CitiesProvider({ children }) {
 
       const res = await fetch(`${BASE_URL}/cities/${id}`);
       const data = await res.json();
+
       setCurrCity(data);
     } catch (err) {
       alert("There was an error retrieving the city");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function createCity(newCity) {
+    try {
+      setIsLoading(true);
+
+      const res = await fetch(`${BASE_URL}/cities`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCity),
+      });
+
+      const data = await res.json();
+
+      setCities((cities) => [...cities, data]);
+    } catch (err) {
+      alert("There was an error adding the city");
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function deleteCity(id) {
+    try {
+      setIsLoading(true);
+      await fetch(`${BASE_URL}/cities/${id}`, {
+        method: "DELETE",
+      });
+
+      setCities((cities) => cities.filter((city) => city.id !== id));
+    } catch (err) {
+      console.error("Error during deletion:", err);
     } finally {
       setIsLoading(false);
     }
@@ -51,6 +88,8 @@ function CitiesProvider({ children }) {
         setIsLoading,
         currCity,
         getCity,
+        createCity,
+        deleteCity,
       }}
     >
       {children}
@@ -58,4 +97,4 @@ function CitiesProvider({ children }) {
   );
 }
 
-export { CitiesProvider, CitiesContext };
+export { CitiesProvider };

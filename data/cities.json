@@ -35,6 +35,54 @@
         "lng": 13.376933665713324
       },
       "id": "98443197"
+    },
+    {
+      "cityName": "Castello de la Plana",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2026-06-25T07:49:13.135Z",
+      "notes": "",
+      "position": {
+        "lat": "40.0030552356847",
+        "lng": "-0.0705533250916446"
+      },
+      "id": "JMykQjbK4m0"
+    },
+    {
+      "cityName": "Timokten",
+      "country": "Algeria",
+      "emoji": "🇩🇿",
+      "date": "2026-06-25T07:49:17.656Z",
+      "notes": "asdasdd",
+      "position": {
+        "lat": "28.310114795923745",
+        "lng": "1.5144936609956083"
+      },
+      "id": "ERGQx_wr0yg"
+    },
+    {
+      "cityName": "Chodos",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2026-06-25T08:27:04.848Z",
+      "notes": "asdasdasdasdasd",
+      "position": {
+        "lat": "40.209398452654995",
+        "lng": "-0.2637129094368684"
+      },
+      "id": "-7PhNIkdy-8"
+    },
+    {
+      "cityName": "Almassora",
+      "country": "Spain",
+      "emoji": "🇪🇸",
+      "date": "2026-06-25T08:31:59.104Z",
+      "notes": "",
+      "position": {
+        "lat": "39.97532108034707",
+        "lng": "-0.10299942994519198"
+      },
+      "id": "URCSo5VbliI"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

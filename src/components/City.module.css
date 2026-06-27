@@ -4,6 +4,7 @@
   background-color: var(--color-dark--2);
   border-radius: 7px;
   overflow: scroll;
+  overflow-x: hidden;
 
   width: 100%;
   display: flex;
@@ -38,6 +39,8 @@
 
 .city p {
   font-size: 1.6rem;
+  max-width: 35ch;
+  overflow-wrap: break-word;
 }
 
 .city a:link,

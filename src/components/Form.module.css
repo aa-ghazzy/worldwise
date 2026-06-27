@@ -9,6 +9,7 @@
 }
 
 .form textarea {
+  min-height: fit-content;
   max-height: 200px;
   resize: vertical;
 }

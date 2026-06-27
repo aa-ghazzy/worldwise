@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/useAuth";
 import styles from "./User.module.css";
 
+// eslint-disable-next-line no-unused-vars
 const FAKE_USER = {
   name: "Jack",
   email: "jack@example.com",
@@ -8,9 +11,14 @@ const FAKE_USER = {
 };
 
 function User() {
-  const user = FAKE_USER;
+  // const user = FAKE_USER;
+  const { logout, user } = useAuth();
+  const navigate = useNavigate();
 
-  function handleClick() {}
+  function handleClick() {
+    logout();
+    navigate("/");
+  }
 
   return (
     <div className={styles.user}>
